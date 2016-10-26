@@ -1,0 +1,28 @@
+.wrapper{
+	border: 5px dashed;
+    height: 300px;
+    margin: 100px auto;
+    width: 1000px;
+}
+
+button{
+	 border: 1px solid;
+    border-radius: 10px;
+    display:inline-block;
+    font-size: 14px;
+    height: 50px;
+    margin: 20px;
+    padding: 10px;
+    width: 100px;
+}
+
+span{
+	  border: 1px solid gray;
+    display: inline-block;
+    height: 50px;
+    margin: 20px;
+    text-align: center;
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+}
