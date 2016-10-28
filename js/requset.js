@@ -45,6 +45,7 @@
 
 	function xhrRequest(url, callback) {
 		var xhr = createXHR();
+	
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {
 				if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304 ) { //200 表示相应成功 304 表示缓存中存在请求的资源  
@@ -59,9 +60,10 @@
 				
 			}
 		}
-
+		
 		xhr.open('get', url, true);
 		xhr.send();
+	
 	}
 	
 	document.getElementById("startBtn_forXhrMore").onclick=function(){
