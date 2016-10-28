@@ -24,38 +24,37 @@
 		}
 	}
 
-	function startRequest(type) {
+	function startRequest() {
 
-		var _xhrCount = 0,_errCount=0;
 		var startTimeSeconds = new Date().getTime();
 		var endTimeSeconds;
 		document.getElementById("showBox_forXhrMore").innerHTML="已开始发送请求，请等待...";
-				for(var i = 0; i <1000; i++) {
-					xhrRequest(_errCount,"http://ofloj49yv.bkt.clouddn.com/1025-" + (i + 1) + ".json", function(_errCount) {
-						_xhrCount++;
-						if(_xhrCount >= 1000) {
+		
+		xhrRequest("http://ofloj49yv.bkt.clouddn.com/1000times.json" , function() {
+			
 							endTimeSeconds = new Date().getTime();
 							var useTime = Math.ceil(endTimeSeconds - startTimeSeconds) / 1000;
-							document.getElementById("showBox_forXhrMore").innerHTML='1000次XHR请求共用时' + useTime + 's,<br/>其中'+_errCount+'个失败';
-						}
+							document.getElementById("showBox_forXhrMore").innerHTML='1次XHR请求共用时' + useTime + 's';
+
 
 					})
-				}
+			
 		
 
 	}
 
-	function xhrRequest(_errCount,url, callback) {
+	function xhrRequest(url, callback) {
 		var xhr = createXHR();
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {
 				if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304 ) { //200 表示相应成功 304 表示缓存中存在请求的资源  
 					// 对响应的信息写在回调函数里面 
 						
-					callback(_errCount);
+					callback();
 				} else {
-					_errCount++;
-					callback(_errCount);
+					callback();
+					return 'request is unsucessful ' + xhr.status;
+					
 				}
 				
 			}
